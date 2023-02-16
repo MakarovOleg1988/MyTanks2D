@@ -1,50 +1,48 @@
 using UnityEngine;
-using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.InputSystem;
 
 namespace MyTanks2D
 {
-    public class PlayerController : PlayerParam
+    [RequireComponent(typeof(MoveComponent), typeof(FireComponent))]
+    public class PlayerController : MonoBehaviour
     {
-        private NewControls _Controller;
-        private Rigidbody2D _rbPlayer;
+        private MoveComponent _moveComp;
+        private FireComponent _fireComp;
+        private DirectionType _lastType;
 
-        private void Awake()
-        {
-            _Controller = new NewControls();
-            _Controller.NewActionMap.Enable();
-            _Controller.NewActionMap.Fire.performed += SimpleFire;
-        }
+        [SerializeField] private InputAction _move;
+        [SerializeField] private InputAction _fire;
 
         private void Start()
         {
-            _rbPlayer = GetComponent<Rigidbody2D>();
+            _moveComp = GetComponent<MoveComponent>();
+            _fireComp = GetComponent<FireComponent>();
+
+            _move.Enable();
+            _fire.Enable();
         }
 
         private void Update()
         {
-            Movement();
-        }
+            var fire = _fire.ReadValue<float>();
+            if (fire == 1f) _fireComp.OnFire();
 
-        private void Movement()
-        {
-            var direction = _Controller.NewActionMap.Movement.ReadValue<Vector2>();
-            var velocity = new Vector3(direction.x, direction.y, 0f);
-            transform.position += velocity * GetMovementPlayer() * Time.deltaTime;
-        }
-
-        private void SimpleFire(CallbackContext context)
-        {
-            if (_timebetweenFire <= 0)
+            var direction = _move.ReadValue<Vector2>();
+            DirectionType type;
+            if (direction.x != 0f && direction.y != 0f)
             {
-                var bullet = Instantiate(_simplebullets, _firepoint.transform.position, Quaternion.identity);
-                _timebetweenFire = 2f;
+                type = _lastType;
             }
-            else _timebetweenFire -= Time.deltaTime;
+            else if (direction.x == 0f && direction.y == 0f) return;
+            else type = _lastType = direction.ConvertDirectionFromType();
+
+            _moveComp.OnMove(type);
         }
 
         private void OnDestroy()
         {
-            _Controller.Disable();
+            _move.Dispose();
+            _fire.Dispose();
         }
     }
 }   

@@ -2,14 +2,12 @@ namespace MyTanks2D
 {
     public enum SideType : byte
     {
-        None,
         Player,
         Enemy
     }
 
-    public enum DirectionType : byte
+    public enum DirectionType : int
     {
-        Error,
         Right,
         Left,
         Up,
