@@ -2516,6 +2516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4605972514537586960, guid: 62f0ed07d02b94147958737f84e84673, type: 3}
+      propertyPath: _ImmortalTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6429361903557370810, guid: 62f0ed07d02b94147958737f84e84673, type: 3}
       propertyPath: m_RootOrder
       value: 1
