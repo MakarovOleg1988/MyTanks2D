@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyTanks2D
 {
-    public class ConditionComponent : MonoBehaviour
+    public class UnitCondition : MonoBehaviour
     {
         [SerializeField] protected int _health = 1;
         public virtual void SetDamage(int damage)

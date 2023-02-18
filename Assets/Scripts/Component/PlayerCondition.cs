@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyTanks2D
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class PlayerConditionComponent : ConditionComponent
+    public class PlayerCondition : UnitCondition
     {
         private SpriteRenderer _sprite;
         private Vector3 _startPosition;

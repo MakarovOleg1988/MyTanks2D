@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MyTanks2D
 {
-    public class MoveComponent : MonoBehaviour
+    public class MoveParam : MonoBehaviour
     {
         [SerializeField] private float _speedMove = 1f;
 

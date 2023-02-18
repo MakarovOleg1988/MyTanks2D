@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 namespace MyTanks2D
 {
-    [RequireComponent(typeof(MoveComponent), typeof(FireComponent))]
+    [RequireComponent(typeof(MoveParam), typeof(FireParam))]
     public class PlayerController : MonoBehaviour
     {
-        private MoveComponent _moveComp;
-        private FireComponent _fireComp;
+        private MoveParam _moveComp;
+        private FireParam _fireComp;
         private DirectionType _lastType;
 
         [SerializeField] private InputAction _move;
@@ -15,8 +15,8 @@ namespace MyTanks2D
 
         private void Start()
         {
-            _moveComp = GetComponent<MoveComponent>();
-            _fireComp = GetComponent<FireComponent>();
+            _moveComp = GetComponent<MoveParam>();
+            _fireComp = GetComponent<FireParam>();
 
             _move.Enable();
             _fire.Enable();
@@ -24,7 +24,7 @@ namespace MyTanks2D
 
         private void Update()
         {
-            var fire = _fire.ReadValue<float>();
+            float fire = _fire.ReadValue<float>();
             if (fire == 1f) _fireComp.OnFire();
 
             var direction = _move.ReadValue<Vector2>();

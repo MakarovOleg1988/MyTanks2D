@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyTanks2D
 {
-    [RequireComponent(typeof(MoveComponent))]
+    [RequireComponent(typeof(MoveParam))]
     public class Projectile : MonoBehaviour
     {
         private SideType _side;
         private DirectionType _direction;
-        private MoveComponent _moveComp;
+        private MoveParam _moveComp;
 
         [SerializeField, Range(1f, 5f)] private int _damage = 1;
         [SerializeField] private float _lifeTime = 4f;
 
         private void Start()
         {
-            _moveComp = GetComponent<MoveComponent>();
+            _moveComp = GetComponent<MoveParam>();
             Destroy(gameObject, _lifeTime);
         }
 
@@ -29,19 +27,19 @@ namespace MyTanks2D
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var fire = collision.GetComponent<FireComponent>();
+            var fire = collision.GetComponent<FireParam>();
 
             if (fire != null)
             {
                 if (fire.GetSide == _side) return;
 
-                var condition = collision.GetComponent<ConditionComponent>();
+                var condition = collision.GetComponent<UnitCondition>();
                 condition.SetDamage(_damage);
                 Destroy(gameObject);
                 return;
             }
 
-            var cell = collision.GetComponent<CellComponent>();
+            var cell = collision.GetComponent<CellCondition>();
 
             if (cell != null)
             {

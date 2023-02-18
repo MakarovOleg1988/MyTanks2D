@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyTanks2D
 {
-    public class CellComponent : MonoBehaviour
+    public class CellCondition : MonoBehaviour
     {
         [SerializeField] private bool _destroyProjectile;
         [SerializeField] private bool _destroyCell;

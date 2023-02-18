@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MyTanks2D
 {
-    public class FireComponent : MonoBehaviour
+    public class FireParam : MonoBehaviour
     {
         private bool _canFire = true;
 
@@ -15,10 +15,10 @@ namespace MyTanks2D
 
     public void OnFire()
         {
-            if (!_canFire) return;
+            if (_canFire == false) return;
             _canFire = false;
 
-            var bullet = Instantiate(_prefab, _firepoint.transform.position, transform.rotation);
+            Projectile bullet = Instantiate(_prefab, _firepoint.transform.position, transform.rotation);
             bullet.SetParams(transform.eulerAngles.ConvertRotationFromType(), GetSide);
             StartCoroutine(Timer());
         }

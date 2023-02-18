@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyTanks2D
@@ -27,9 +26,9 @@ namespace MyTanks2D
         {
             for (int i = 0; i < _volumeEnemy; i++)
             {
-                if (!_canSpawn) return;
+                if (_canSpawn == false) return;
             {
-                    var enemy = Instantiate(_enemyTank, _spawnPoint.transform.position, transform.rotation);
+                    GameObject enemy = Instantiate(_enemyTank, _spawnPoint.transform.position, transform.rotation);
                     StartCoroutine(Timer());
                 }
             }
@@ -38,7 +37,7 @@ namespace MyTanks2D
         private IEnumerator Timer()
         {
             _canSpawn = false;
-            _timebetweenFire = Random.Range(15f, 30f);
+            _timebetweenFire = Random.Range(5f, 15f);
             yield return new WaitForSeconds(_timebetweenFire);
             _canSpawn = true;
         }
