@@ -25,7 +25,7 @@ namespace MyTanks2D
             _moveComp.OnMove(_direction);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public void OnTriggerEnter2D(Collider2D collision)
         {
             var fire = collision.GetComponent<FireParam>();
 
@@ -33,18 +33,18 @@ namespace MyTanks2D
             {
                 if (fire.GetSide == _side) return;
 
-                var condition = collision.GetComponent<UnitCondition>();
+                UnitCondition condition = collision.GetComponent<UnitCondition>();
                 condition.SetDamage(_damage);
                 Destroy(gameObject);
                 return;
             }
 
-            var cell = collision.GetComponent<CellCondition>();
+            CellCondition cell = collision.GetComponent<CellCondition>();
 
             if (cell != null)
             {
-                if (cell.DestroyProjectile) Destroy(gameObject);
-                if (cell.DestroyCell) Destroy(cell.gameObject);
+                if (cell.DestroyProjectile == true) Destroy(gameObject);
+                if (cell.DestroyCell == true) Destroy(cell.gameObject);
                 return;
             }
         }
