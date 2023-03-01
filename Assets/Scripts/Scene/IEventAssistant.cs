@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public interface IEventAssistant
+namespace MyTanks2D
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IEventAssistant
     {
-        
-    }
+        public static event Action _onSetButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public static void SendSetButton()
+        {
+            _onSetButton?.Invoke();
+        }
     }
 }
