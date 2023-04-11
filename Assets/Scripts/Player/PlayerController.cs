@@ -27,7 +27,8 @@ namespace MyTanks2D
             float fire = _fire.ReadValue<float>();
             if (fire == 1f) _fireComp.OnFire();
 
-            var direction = _move.ReadValue<Vector2>();
+            Vector2 direction = _move.ReadValue<Vector2>();
+
             DirectionType type;
             if (direction.x != 0f && direction.y != 0f)
             {
@@ -35,6 +36,8 @@ namespace MyTanks2D
             }
             else if (direction.x == 0f && direction.y == 0f) return;
             else type = _lastType = direction.ConvertDirectionFromType();
+
+            if (direction.x != 0f || direction.y != 0f) GameSystem.Instance.TutorialManager.OnEvent(TutorialEvent.PlayerMovement);
 
             _moveComp.OnMove(type);
         }

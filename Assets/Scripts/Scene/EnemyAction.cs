@@ -42,7 +42,7 @@ namespace MyTanks2D
         static Random _R = new Random();
         static T RandomEnumValue<T>()
         {
-            var v = Enum.GetValues(typeof(T));
+            Array v = Enum.GetValues(typeof(T));
             return (T)v.GetValue(_R.Next(v.Length));
         }
     }

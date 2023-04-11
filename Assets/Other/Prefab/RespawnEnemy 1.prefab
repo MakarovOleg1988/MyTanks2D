@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1310330349879170914}
   - component: {fileID: 1310330349879170917}
   - component: {fileID: 1310330349879170916}
+  - component: {fileID: 2968561267155368967}
   m_Layer: 6
   m_Name: RespawnEnemy 1
   m_TagString: Untagged
@@ -88,3 +89,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyTank: {fileID: 3384636106273310804, guid: 7bd82bc253d4e5f41aa2ba265dcecde1, type: 3}
   _volumeEnemy: 5
+--- !u!114 &2968561267155368967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310330349879170915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1b15edf54954547ac437b241d3f4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

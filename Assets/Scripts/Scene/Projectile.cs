@@ -27,13 +27,14 @@ namespace MyTanks2D
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
-            var fire = collision.GetComponent<FireParam>();
+            FireParam fire = collision.GetComponent<FireParam>();
 
             if (fire != null)
             {
                 if (fire.GetSide == _side) return;
 
                 UnitCondition condition = collision.GetComponent<UnitCondition>();
+                GameSystem.Instance.TutorialManager.OnEvent(TutorialEvent.PlayerKillEnemy);
                 condition.SetDamage(_damage);
                 Destroy(gameObject);
                 return;
