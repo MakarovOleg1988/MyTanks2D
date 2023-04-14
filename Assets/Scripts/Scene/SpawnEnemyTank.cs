@@ -7,10 +7,14 @@ namespace MyTanks2D
     {
         [SerializeField] private GameObject _enemyTank;
         private Transform _spawnPoint;
-        [Space, SerializeField] private int _volumeEnemy;
-        private bool _canSpawn = true;
 
-        private float _timebetweenSpawn;
+        [Space, SerializeField] private int _volumeEnemy;
+        [SerializeField, Range(1f, 20f)] private float _minSecTimer;
+        [SerializeField, Range(25f, 40f)] private float _maxSecTimer;
+        [SerializeField, Range(1f, 100f)]private float _timebetweenSpawn;
+
+        private bool _enemyCanSpawn = true;
+        private bool EnemyCanSpawn => _enemyCanSpawn == false;
 
         private void Start()
         {
@@ -26,7 +30,7 @@ namespace MyTanks2D
         {
             for (int i = 0; i < _volumeEnemy; i++)
             {
-                if (_canSpawn == false) return;
+                if (EnemyCanSpawn) return;
             {
                     GameObject enemy = Instantiate(_enemyTank, _spawnPoint.transform.position, Quaternion.identity);
                     enemy.transform.parent = transform;
@@ -37,10 +41,10 @@ namespace MyTanks2D
 
         private IEnumerator Timer()
         {
-            _canSpawn = false;
-            _timebetweenSpawn = Random.Range(5f, 15f);
+            _enemyCanSpawn = false;
+            _timebetweenSpawn = Random.Range(_minSecTimer, _maxSecTimer);
             yield return new WaitForSeconds(_timebetweenSpawn);
-            _canSpawn = true;
+            _enemyCanSpawn = true;
         }
     }
 }

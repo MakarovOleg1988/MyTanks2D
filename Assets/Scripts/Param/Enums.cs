@@ -14,12 +14,6 @@ namespace MyTanks2D
         Down
     }
 
-    public enum LocalizationType : byte
-    {
-        Eng,
-        Rus
-    }
-
     [System.Serializable]
     public enum TutorialEvent
     {
