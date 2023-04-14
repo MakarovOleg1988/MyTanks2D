@@ -28,8 +28,6 @@ namespace MyTanks2D
             bullet.transform.parent = _pool.transform;
             bullet.SetParams(transform.eulerAngles.ConvertRotationFromType(), GetSide);
             StartCoroutine(Timer());
-
-            GameSystem.Instance.TutorialManager.OnEvent(TutorialEvent.PlayerFire);
         }
 
         private IEnumerator Timer()

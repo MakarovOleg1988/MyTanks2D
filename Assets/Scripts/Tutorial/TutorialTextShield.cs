@@ -22,7 +22,7 @@ namespace MyTanks2D
             for (int i = 0; i < text.Length; i++)
             {
                 _text.text += text[i];
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
 

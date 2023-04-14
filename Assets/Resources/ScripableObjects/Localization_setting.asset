@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Localization_setting
   m_EditorClassIdentifier: 
   PrefKey: lang
-  DefaultLanguage: 21
+  DefaultLanguage: 10
   SupportedLanguages:
   - Language: 10
     ResourceFile: eng

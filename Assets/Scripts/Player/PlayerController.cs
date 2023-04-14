@@ -24,9 +24,23 @@ namespace MyTanks2D
 
         private void Update()
         {
-            float fire = _fire.ReadValue<float>();
-            if (fire == 1f) _fireComp.OnFire();
+            FireMainGun();
+            MovementPlayer();
+        }
 
+        private void FireMainGun()
+        {
+            float fire = _fire.ReadValue<float>();
+
+            if (fire == 1f)
+            {
+                _fireComp.OnFire();
+                GameSystem.Instance.TutorialManager.OnEvent(TutorialEvent.PlayerFire);
+            }
+        }
+
+        private void MovementPlayer()
+        {
             Vector2 direction = _move.ReadValue<Vector2>();
 
             DirectionType type;
@@ -41,6 +55,7 @@ namespace MyTanks2D
 
             _moveComp.OnMove(type);
         }
+
 
         private void OnDestroy()
         {
