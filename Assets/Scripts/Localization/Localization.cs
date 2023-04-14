@@ -14,7 +14,7 @@ namespace MyTanks2D
 
         public static void Load()
         {
-            var lang = PlayerPrefs.GetString(LocalizationSettings.Instance.PrefKey, null);
+            string lang = PlayerPrefs.GetString(LocalizationSettings.Instance.PrefKey, null);
 
             if (!Enum.TryParse(lang, out SystemLanguage localizationLanguege))
             {
@@ -30,8 +30,8 @@ namespace MyTanks2D
 
         private static void LoadTermsMap()
         {
-            var language = LocalizationSettings.Instance.SupportedLanguages.FirstOrDefault(x => x.Language == CurrentLanguage);
-            var resource = Resources.Load<LocalizationResource>(language.ResourcesFile);
+            SupportedLanguage language = LocalizationSettings.Instance.SupportedLanguages.FirstOrDefault(x=> x.Language == CurrentLanguage);
+            LocalizationResource resource = Resources.Load<LocalizationResource>(language.ResourceFile);
 
             _termsMap =  resource.Terms.ToLookup(item => item.Key, item => item.Value);
         }
@@ -42,27 +42,27 @@ namespace MyTanks2D
 
             if (!IsLoaded) Load();
 
-            var result = _termsMap[key].FirstOrDefault();
+            string result = _termsMap[key].FirstOrDefault();
 
             if (result != null)
             {
                 if (parameters != null && parameters.Count > 0)
                 {
                     parameters.Aggregate(result,
-                        (currrent, parameter) => currrent.Replace($"%{parameter.Key}%", parameter.Value));
+                    (currrent, parameter) => currrent.Replace($"%{parameter.Key}%", parameter.Value));
                 }
-                return result;
 
+                return result;
             }
 
             if (Application.isPlaying) Debug.LogWarning($"{ key} not found in {CurrentLanguage}");
 
-            return $">> {key} <<";
+            return $">>{key}<<";
         }
 
         private static SystemLanguage DetectLanguage()
         {
-            var systemLanguage = Application.systemLanguage;
+            SystemLanguage systemLanguage = Application.systemLanguage;
 
             foreach (var lang in LocalizationSettings.Instance.SupportedLanguages)
             {
@@ -71,6 +71,7 @@ namespace MyTanks2D
                     return lang.Language;
                 }
             }
+
             return LocalizationSettings.Instance.DefaultLanguage;
         }
 

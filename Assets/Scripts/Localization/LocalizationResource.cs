@@ -15,5 +15,4 @@ namespace MyTanks2D
         public string Key;
         public string Value;
     }
-
 }

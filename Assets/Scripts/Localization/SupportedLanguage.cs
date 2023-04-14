@@ -6,6 +6,6 @@ namespace MyTanks2D
     public class SupportedLanguage
     {
         public SystemLanguage Language;
-        public string ResourcesFile;
+        public string ResourceFile;
     }
 }

@@ -15,7 +15,6 @@ namespace MyTanks2D
                 {
                     _instance = Resources.Load<LocalizationSettings>("Localization_setting");
                 }
-
                 return _instance;
             }
         }
