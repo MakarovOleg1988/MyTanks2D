@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyTanks2D
+namespace Assets.Scripts
 {
-    [CreateAssetMenu(fileName = "localization.asset", menuName = "Localization/Create LocalizationResources")]
+    [CreateAssetMenu(fileName = "localization.asset", menuName = "Localization/Create Resources")]
     public class LocalizationResource : ScriptableObject
     {
         public List<LocalizationTerm> Terms;

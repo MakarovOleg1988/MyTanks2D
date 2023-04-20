@@ -46,6 +46,15 @@ namespace MyTanks2D
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotationTower"",
+                    ""type"": ""Value"",
+                    ""id"": ""fa603538-80d6-48d7-8656-4354bf43e492"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -114,6 +123,39 @@ namespace MyTanks2D
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f1dffa7b-7172-4de1-8526-4ce1bb136793"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotationTower"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""769e159c-57f0-4aaf-baab-2f1a5151f25e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotationTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c3c7701d-1621-4458-b478-fbc04e404541"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotationTower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -124,6 +166,7 @@ namespace MyTanks2D
             m_NewActionMap = asset.FindActionMap("NewActionMap", throwIfNotFound: true);
             m_NewActionMap_Movement = m_NewActionMap.FindAction("Movement", throwIfNotFound: true);
             m_NewActionMap_Fire = m_NewActionMap.FindAction("Fire", throwIfNotFound: true);
+            m_NewActionMap_RotationTower = m_NewActionMap.FindAction("RotationTower", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -185,12 +228,14 @@ namespace MyTanks2D
         private INewActionMapActions m_NewActionMapActionsCallbackInterface;
         private readonly InputAction m_NewActionMap_Movement;
         private readonly InputAction m_NewActionMap_Fire;
+        private readonly InputAction m_NewActionMap_RotationTower;
         public struct NewActionMapActions
         {
             private @NewControls m_Wrapper;
             public NewActionMapActions(@NewControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_NewActionMap_Movement;
             public InputAction @Fire => m_Wrapper.m_NewActionMap_Fire;
+            public InputAction @RotationTower => m_Wrapper.m_NewActionMap_RotationTower;
             public InputActionMap Get() { return m_Wrapper.m_NewActionMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -206,6 +251,9 @@ namespace MyTanks2D
                     @Fire.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnFire;
                     @Fire.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnFire;
                     @Fire.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnFire;
+                    @RotationTower.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnRotationTower;
+                    @RotationTower.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnRotationTower;
+                    @RotationTower.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnRotationTower;
                 }
                 m_Wrapper.m_NewActionMapActionsCallbackInterface = instance;
                 if (instance != null)
@@ -216,6 +264,9 @@ namespace MyTanks2D
                     @Fire.started += instance.OnFire;
                     @Fire.performed += instance.OnFire;
                     @Fire.canceled += instance.OnFire;
+                    @RotationTower.started += instance.OnRotationTower;
+                    @RotationTower.performed += instance.OnRotationTower;
+                    @RotationTower.canceled += instance.OnRotationTower;
                 }
             }
         }
@@ -224,6 +275,7 @@ namespace MyTanks2D
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
+            void OnRotationTower(InputAction.CallbackContext context);
         }
     }
 }

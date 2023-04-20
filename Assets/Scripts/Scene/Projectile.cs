@@ -2,19 +2,20 @@ using UnityEngine;
 
 namespace MyTanks2D
 {
-    [RequireComponent(typeof(MoveParam))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Projectile : MonoBehaviour
     {
         private SideType _side;
         private DirectionType _direction;
-        private MoveParam _moveComp;
+        private Rigidbody2D _rbBullet;
 
         [SerializeField, Range(1f, 5f)] private int _damage = 1;
+        [SerializeField, Range(0.1f, 2f)] private float _bulletForce = 1f;
         [SerializeField] private float _lifeTime = 4f;
 
         private void Start()
         {
-            _moveComp = GetComponent<MoveParam>();
+            _rbBullet = GetComponent<Rigidbody2D>();
             Destroy(gameObject, _lifeTime);
         }
 
@@ -22,7 +23,7 @@ namespace MyTanks2D
 
         private void Update()
         {
-            _moveComp.OnMove(_direction);
+            _rbBullet.AddForce(transform.up * _bulletForce, ForceMode2D.Impulse); 
         }
 
         public void OnTriggerEnter2D(Collider2D collision)

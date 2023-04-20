@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722c46276d88f6944bcf43c43fdba382, type: 3}
+  m_Name: Tutorial Eng
+  m_EditorClassIdentifier: 
+  _startTrigger: 1
+  _steps:
+  - startTrigger: 1
+    _tutorialAction: 0
+    data: ' Good morning, Corporal!'
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 6
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: ' Press the WASD buttons to move'
+  - startTrigger: 2
+    _tutorialAction: 4
+    data: 2
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: ' Great, your tank is working properly!'
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 8
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: Now let's test your weapon!
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 8
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: Press Space to shoot! Shoot at the gray wall
+  - startTrigger: 3
+    _tutorialAction: 4
+    data: 8
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 2
+    data: Enemy Tank 1
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: Enemy tank is straight ahead! Attack him!
+  - startTrigger: 4
+    _tutorialAction: 4
+    data: 2
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: ' Great hit! The enemy is destroyed!'
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 6
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 1
+    data: Interface UI
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: Look carefully at your weapon panel
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 6
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 0
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: ' Training completed! Time for the real fight'

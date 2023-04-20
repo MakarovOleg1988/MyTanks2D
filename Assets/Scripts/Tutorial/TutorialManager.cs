@@ -12,6 +12,7 @@ namespace MyTanks2D
         private GameObject _tutorialHintGO;
         private GameObject _tutorialHintUI;
         [Space(30f)] public TutorialCriptableObject[] _tutorialCriptableObject;
+        [SerializeField] public string _nameOfTutorial;
         private TutorialCriptableObject _currentScript;
 
         private int _currentStep;
@@ -27,7 +28,7 @@ namespace MyTanks2D
         {
             foreach (var script in _tutorialCriptableObject)
             {
-                if (script._startTrigger == @event)
+                if (script._startTrigger == @event && script.name == _nameOfTutorial)
                 {
                     _currentScript = script;
                     _currentStep = 0;

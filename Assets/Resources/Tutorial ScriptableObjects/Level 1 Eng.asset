@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722c46276d88f6944bcf43c43fdba382, type: 3}
+  m_Name: Level 1 Eng
+  m_EditorClassIdentifier: 
+  _startTrigger: 1
+  _steps:
+  - startTrigger: 1
+    _tutorialAction: 0
+    data: Level 1
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 6
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 
+  - startTrigger: 0
+    _tutorialAction: 0
+    data: Destroy 10 enemy tanks!
+  - startTrigger: 0
+    _tutorialAction: 4
+    data: 8
+  - startTrigger: 0
+    _tutorialAction: 3
+    data: 

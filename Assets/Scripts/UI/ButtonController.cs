@@ -19,7 +19,7 @@ namespace MyTanks2D
         private IEnumerator CoroutineStartGame()
         {
             yield return new WaitForSeconds(0.2f);
-            SceneManager.LoadScene("Level 1");
+            SceneManager.LoadScene("Tutorial Level");
         }
 
         public void Options()

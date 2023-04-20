@@ -39,9 +39,9 @@ namespace MyTanks2D
             }
         }
 
-        private void MovementPlayer()
+        public void MovementPlayer()
         {
-            Vector2 direction = _move.ReadValue<Vector2>();
+            Vector2 direction =  _move.ReadValue<Vector2>();
 
             DirectionType type;
             if (direction.x != 0f && direction.y != 0f)

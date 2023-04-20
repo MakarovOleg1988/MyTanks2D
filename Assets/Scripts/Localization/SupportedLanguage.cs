@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MyTanks2D
+namespace Assets.Scripts
 {
     [System.Serializable]
     public class SupportedLanguage
